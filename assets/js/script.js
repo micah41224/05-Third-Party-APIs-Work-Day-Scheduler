@@ -94,7 +94,17 @@ for (var i = 0; i < hours.length; i++) {
     var entryBox = $("<div class='description future'>")
     var btnBox = $("<button class='col-md-1 saveBtn'>")
     var actualBtn = $("<i class='far fa-save fa-lg'></i>")
+    var inputForm = $("<form class='dataEntry future'></form>");
 
+    inputForm.append( 
+        $("<input>", 
+             { type:'text', 
+               class:'future',
+               placeholder:'Enter planner data here', 
+               name:'keyword', 
+               style:'width:100%' }
+         )
+    );
 
     timeBox.text(hours[i]);
     entryBox.text(dailyEntry[i]);
@@ -102,6 +112,7 @@ for (var i = 0; i < hours.length; i++) {
    
     rootDiv.append(baseRow);
     btnBox.append(actualBtn);
+    entryBox.append(inputForm);
     baseRow.append(timeBox, entryBox, btnBox);
 
     
