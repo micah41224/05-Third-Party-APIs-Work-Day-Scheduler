@@ -91,11 +91,14 @@ for (var i = 0; i < hours.length; i++) {
     // Create a new `<div>` for each ability and its text content
     var baseRow = $("<div class='row'>");
     var timeBox = $("<div class='hour'>");
-    var entryBox = $("<div class='description present'>")
-    var saveBtn = $("<i class='far fa-save fa-lg saveBtn'></i>")
+    var entryBox = $("<div class='description'>")
+    var btnBox = $("<div class='col-md-1 saveBtn far fa-save fa-lg align-middle' align='center'>")
+    //var btnBox = $("<div class='col-md-1 saveBtn far fa-save fa-lg' vertical-align:middle>")
+    var saveBtn = $("<i class='far fa-save fa-lg></i>")
   
     timeBox.text(hours[i]);
     entryBox.text(dailyEntry[i]);
+   
     //abilityEl.text(abilities[i]);
   
     // `my-3` class adds margin on top and bottom
@@ -107,7 +110,8 @@ for (var i = 0; i < hours.length; i++) {
   
     // Add this new `<div>` to the abilities `<div>` container element.
     rootDiv.append(baseRow);
-    baseRow.append(timeBox, entryBox, saveBtn);
+    baseRow.append(timeBox, entryBox, btnBox);
+    //btnBox.append(saveBtn);
     //baseRow.append(entryBox);
     //baseRow.append(saveBtn);
   }
