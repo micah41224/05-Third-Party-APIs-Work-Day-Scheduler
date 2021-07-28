@@ -19,11 +19,12 @@ $("#currentDay").text(today.format("dddd, MMMM Do"));
 var hours = ["9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm"];
 var military = [9, 10, 11, 12, 13, 14, 15, 16, 17];
 var dailyEntry = ["", "", "", "", "", "", "", "", ""];
-var presentTime = (moment().hour())-6;
-console.log(moment().hour())
+var presentTime = (moment().hour());
+//console.log(moment().hour())
 
 
 var rootDiv = $('#root');
+
 
 
 for (var i = 0; i < hours.length; i++) {
