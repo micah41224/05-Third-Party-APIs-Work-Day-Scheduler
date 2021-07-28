@@ -80,11 +80,14 @@ $("#currentDay").text(today.format("dddd, MMMM Do"));
 
 
 var hours = ["9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm"];
-var military = [9, 10, 11, 12, 13, 14, 15, 16, 17];
+var military = [0900, 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700];
 var dailyEntry = ["", "", "", "", "", "", "", "", ""];
+var presentTime = moment().hour();
 
 
 var rootDiv = $('#root');
+
+
 
 
 for (var i = 0; i < hours.length; i++) {
@@ -94,19 +97,29 @@ for (var i = 0; i < hours.length; i++) {
     var entryBox = $("<div class='description future'>")
     var btnBox = $("<button class='col-md-1 saveBtn'>")
     var actualBtn = $("<i class='far fa-save fa-lg'></i>")
+    //var inputForm = $("<form class='dataEntry future' type='text' placeholder='Enter planner' style='width:100%'></form>");
     var inputForm = $("<form class='dataEntry future'></form>");
+    
+    /*
+    .attr({
+        "class": "dataEntry future",
+        "type": "text",
+        "placeholder": "Enter planner",
+        "style": "width:100%"
+});
+    */
 
     inputForm.append( 
         $("<input>", 
              { type:'text', 
-               class:'future',
+               //class:'future',
                placeholder:'Enter planner data here', 
                name:'keyword', 
                style:'width:100%' }
          )
     );
 
-    timeBox.text(hours[i]);
+    timeBox.text(hours[i]+"  /  "+military[i]);
     entryBox.text(dailyEntry[i]);
    
    
@@ -117,6 +130,21 @@ for (var i = 0; i < hours.length; i++) {
 
     
   }
+
+  function timeColorShift() {
+      if (military[i] > presentTime) {
+        inputForm.addclass("past");
+    }
+        else if(military[i] < presentTime) {
+            inputForm.addclass("future");
+        }
+        else if(military[i] < presentTime) {
+            inputForm.addclass("present");
+        }
+
+    }
+  
+        timeColorShift();
 
 
 /*
