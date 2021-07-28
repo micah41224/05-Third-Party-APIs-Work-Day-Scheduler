@@ -75,14 +75,29 @@ var dayArray = [
 ]
 */
 
+function timeColorShift() {
+    if (military[i] < presentTime) {
+      inputForm.addClass("past");
+  }
+      else if(military[i] > presentTime) {
+          inputForm.addClass("future");
+      }
+      else if(military[i] = presentTime) {
+          inputForm.addClass("present");
+      }
+console.log("military time " +military[i]);
+console.log("present time " +presentTime);
+  }
+
 var today = moment();
 $("#currentDay").text(today.format("dddd, MMMM Do"));
 
 
 var hours = ["9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm"];
-var military = [0900, 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700];
+var military = [9, 10, 11, 12, 13, 14, 15, 16, 17];
 var dailyEntry = ["", "", "", "", "", "", "", "", ""];
-var presentTime = moment().hour();
+var presentTime = (moment().hour())-6;
+console.log(moment().hour())
 
 
 var rootDiv = $('#root');
@@ -98,18 +113,13 @@ for (var i = 0; i < hours.length; i++) {
     var btnBox = $("<button class='col-md-1 saveBtn'>")
     var actualBtn = $("<i class='far fa-save fa-lg'></i>")
     //var inputForm = $("<form class='dataEntry future' type='text' placeholder='Enter planner' style='width:100%'></form>");
-    var inputForm = $("<form class='dataEntry future'></form>");
-    
-    /*
-    .attr({
-        "class": "dataEntry future",
-        "type": "text",
-        "placeholder": "Enter planner",
-        "style": "width:100%"
-});
-    */
+    //var inputForm = $("<form class='dataEntry'></form>");
+    var inputForm = $("<input>")
+    $(inputForm).css("width","100%")
+    //var inputInput;
 
-    inputForm.append( 
+    /*
+    inputInput.append( 
         $("<input>", 
              { type:'text', 
                //class:'future',
@@ -118,19 +128,24 @@ for (var i = 0; i < hours.length; i++) {
                style:'width:100%' }
          )
     );
+*/
 
     timeBox.text(hours[i]+"  /  "+military[i]);
     entryBox.text(dailyEntry[i]);
    
-   
+   // inputForm.append(inputInput);
     rootDiv.append(baseRow);
     btnBox.append(actualBtn);
     entryBox.append(inputForm);
     baseRow.append(timeBox, entryBox, btnBox);
 
-    
+    timeColorShift();
+
   }
 
+
+
+ /* 
   function timeColorShift() {
       if (military[i] > presentTime) {
         inputForm.addclass("past");
@@ -141,10 +156,12 @@ for (var i = 0; i < hours.length; i++) {
         else if(military[i] < presentTime) {
             inputForm.addclass("present");
         }
-
+console.log(i);
     }
   
-        timeColorShift();
+    timeColorShift();
+*/
+
 
 
 /*
@@ -177,3 +194,19 @@ for (var i = 0; i < hours.length; i++) {
 
 
   // Json might can be used to enable you to use the array as it can pack and unpack them in relation to local storage?
+
+
+/*
+  function compareTime() {
+    if (militaryHours[i] > currentHour) {
+        inpDiv.addClass("future");
+        inpDiv.attr("title", "future");
+    }
+    else if (militaryHours[i] < currentHour) {
+        inpDiv.addClass("past");
+        inpDiv.attr("title", "past");
+    }
+    else if (militaryHours[i] == currentHour) {
+        inpDiv.addClass("present");
+        inpDiv.attr("title", "present");
+        */
