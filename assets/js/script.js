@@ -81,39 +81,30 @@ $("#currentDay").text(today.format("dddd, MMMM Do"));
 
 var hours = ["9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm"];
 var military = [9, 10, 11, 12, 13, 14, 15, 16, 17];
-var dailyEntry = ["a", "b", "c", "d", "e", "f", "g", "h", "i"];
+var dailyEntry = ["", "", "", "", "", "", "", "", ""];
 
 
 var rootDiv = $('#root');
 
 
 for (var i = 0; i < hours.length; i++) {
-    // Create a new `<div>` for each ability and its text content
+
     var baseRow = $("<div class='row'>");
     var timeBox = $("<div class='hour'>");
-    var entryBox = $("<div class='description'>")
-    var btnBox = $("<div class='col-md-1 saveBtn far fa-save fa-lg align-middle' align='center'>")
-    //var btnBox = $("<div class='col-md-1 saveBtn far fa-save fa-lg' vertical-align:middle>")
-    var saveBtn = $("<i class='far fa-save fa-lg></i>")
-  
+    var entryBox = $("<div class='description future'>")
+    var btnBox = $("<button class='col-md-1 saveBtn'>")
+    var actualBtn = $("<i class='far fa-save fa-lg'></i>")
+
+
     timeBox.text(hours[i]);
     entryBox.text(dailyEntry[i]);
    
-    //abilityEl.text(abilities[i]);
-  
-    // `my-3` class adds margin on top and bottom
-    //baseRow.addClass('row');
-    //timeBox.addClass('hour');
-  
-    // Alternatively
-    // var abilityEl = $("<div>" + abilities[i] + "</div>");
-  
-    // Add this new `<div>` to the abilities `<div>` container element.
+   
     rootDiv.append(baseRow);
+    btnBox.append(actualBtn);
     baseRow.append(timeBox, entryBox, btnBox);
-    //btnBox.append(saveBtn);
-    //baseRow.append(entryBox);
-    //baseRow.append(saveBtn);
+
+    
   }
 
 
