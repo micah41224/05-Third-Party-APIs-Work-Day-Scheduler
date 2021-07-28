@@ -1,4 +1,4 @@
-/*
+
 var dayArray = [
     {
         id:"0",
@@ -74,24 +74,28 @@ var dayArray = [
     },
 ]
 
-*/
+
 var today = moment();
 $("#currentDay").text(today.format("dddd, MMMM Do"));
 
 
 var hours = [9, 10, 11, 12, 1, 2, 3, 4, 5];
 var military = [9, 10, 11, 12, 13, 14, 15, 16, 17];
+var dailyEntry = ["a", "b", "c", "d", "e", "f", "g", "h", "i"];
 
 
 var rootDiv = $('#root');
 
 
-for (var i = 0; i < dayArray.length; i++) {
+for (var i = 0; i < hours.length; i++) {
     // Create a new `<div>` for each ability and its text content
-    var baseRow = $("<div class='row' id='baseRow>");
-    var timeBox = $("<div>");
+    var baseRow = $("<div class='row'>");
+    var timeBox = $("<div class='hour'>");
+    var entryBox = $("<div class='text-area'>")
+    var saveBtn = $("<i class='far fa-save fa-lg' 'saveBtn'></i>")
   
-    timeBox.text(dayArray.hour[i]);
+    timeBox.text(hours[i]);
+    entryBox.text(dailyEntry[i]);
     //abilityEl.text(abilities[i]);
   
     // `my-3` class adds margin on top and bottom
@@ -103,7 +107,9 @@ for (var i = 0; i < dayArray.length; i++) {
   
     // Add this new `<div>` to the abilities `<div>` container element.
     rootDiv.append(baseRow);
-    rootDiv.append(timeBox);
+    baseRow.append(timeBox);
+    baseRow.append(entryBox);
+    baseRow.append(saveBtn);
   }
 
 
