@@ -28,12 +28,14 @@ var rootDiv = $('#root');
 
 for (var i = 0; i < hours.length; i++) {
 
-console.log(JSON.stringify([i]));
+//console.log(JSON.stringify([i]));
+
+var content= localStorage.getItem(hours[i])
 
     var baseRow = $("<div class='row'>");
     var timeBox = $("<div class='hour'>");
     var entryBox = $("<div class='description future'>")
-    var btnBox = $("<button class='col-md-1 saveBtn'>")
+    var btnBox = $("<button class='col-md-1 saveBtn' data-hour='"+hours[i]+"'>")
     var actualBtn = $("<i class='far fa-save fa-lg'></i>")
 
     //var inputForm = $("<input>")
@@ -42,8 +44,10 @@ console.log(JSON.stringify([i]));
     //var inputForm = $("<textarea>")
     //$(inputForm).css("width","100%")
 
-    var inputForm = $("<textarea id='myTextarea[i]'>")
+    var inputForm = $("<textarea data-hour='"+hours[i]+"'>"+content+"</textarea>")
     $(inputForm).css("width","100%")
+
+    inputForm.text(content);
     
     //console.log("Form:" +inputForm)
 
@@ -67,10 +71,14 @@ function saveToLocalStorage() {
 }
 */
 
-function mySave() {
-  var myContent = document.getElementById("myTextarea[i]").value;
-  localStorage.setItem("myContent", myContent);
-  console.log("this"+myContent)
+function mySave(event) {
+  var target = $(event.currentTarget)
+  var time = target.data("hour")
+  var myContent = document.querySelector("[data-hour='"+time+"']").value;
+  window.alert(myContent);
+
+  localStorage.setItem(time, myContent);
+  //console.log("this"+myContent)
 }
 
 
